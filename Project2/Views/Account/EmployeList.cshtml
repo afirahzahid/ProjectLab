@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Project2.Models.dbEmployee>
+
+@{
+    ViewBag.Title = "EmployeList";
+}
+
+<h2>Employees List</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpFatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpPhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpDOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpDesignation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpIsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.EmpHostelName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpFatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpPhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpDOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpDesignation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpIsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpHostelName)
+        </td>
+        
+    </tr>
+}
+
+</table>

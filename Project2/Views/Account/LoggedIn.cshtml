@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "LoggedIn";
+}
+
+@if (Session["S_CNIC"] != null)
+{
+    <h4> Hye @Session["S_Email"].ToString()</h4>
+}
+

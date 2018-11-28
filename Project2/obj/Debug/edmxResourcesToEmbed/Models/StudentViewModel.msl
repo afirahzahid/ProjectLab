@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbHostelManagementModelStoreContainer" CdmEntityContainer="dbHostelManagementEntities">
+    <EntitySetMapping Name="dbAllotments">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbAllotment">
+        <MappingFragment StoreEntitySet="dbAllotment">
+          <ScalarProperty Name="AllotmentId" ColumnName="AllotmentId" />
+          <ScalarProperty Name="A_RoomId" ColumnName="A_RoomId" />
+          <ScalarProperty Name="A_StudentId" ColumnName="A_StudentId" />
+          <ScalarProperty Name="A_Status" ColumnName="A_Status" />
+          <ScalarProperty Name="A_DateIN" ColumnName="A_DateIN" />
+          <ScalarProperty Name="A_DateOut" ColumnName="A_DateOut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbEmployees">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbEmployee">
+        <MappingFragment StoreEntitySet="dbEmployee">
+          <ScalarProperty Name="EmpCNIC" ColumnName="EmpCNIC" />
+          <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+          <ScalarProperty Name="EmpFatherName" ColumnName="EmpFatherName" />
+          <ScalarProperty Name="EmpPhoneNo" ColumnName="EmpPhoneNo" />
+          <ScalarProperty Name="EmpDOB" ColumnName="EmpDOB" />
+          <ScalarProperty Name="EmpDesignation" ColumnName="EmpDesignation" />
+          <ScalarProperty Name="EmpIsActive" ColumnName="EmpIsActive" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="EmpPassword" ColumnName="EmpPassword" />
+          <ScalarProperty Name="EmpHostelName" ColumnName="EmpHostelName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbFoodItems">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbFoodItem">
+        <MappingFragment StoreEntitySet="dbFoodItems">
+          <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+          <ScalarProperty Name="FoodPrice" ColumnName="FoodPrice" />
+          <ScalarProperty Name="FoodDay" ColumnName="FoodDay" />
+          <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+          <ScalarProperty Name="Food_MenuId" ColumnName="Food_MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbHostels">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbHostel">
+        <MappingFragment StoreEntitySet="dbHostel">
+          <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+          <ScalarProperty Name="HostelName" ColumnName="HostelName" />
+          <ScalarProperty Name="HostelType" ColumnName="HostelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbLogins">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbLogin">
+        <MappingFragment StoreEntitySet="dbLogin">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="LoginEmail" ColumnName="LoginEmail" />
+          <ScalarProperty Name="LoginPass" ColumnName="LoginPass" />
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbMenus">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbMenu">
+        <MappingFragment StoreEntitySet="dbMenu">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Menu_HostelId" ColumnName="Menu_HostelId" />
+          <ScalarProperty Name="Menu_StartDate" ColumnName="Menu_StartDate" />
+          <ScalarProperty Name="Menu_EndDate" ColumnName="Menu_EndDate" />
+          <ScalarProperty Name="Menu_Comments" ColumnName="Menu_Comments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbMesses">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbMess">
+        <MappingFragment StoreEntitySet="dbMess">
+          <ScalarProperty Name="MessId" ColumnName="MessId" />
+          <ScalarProperty Name="Mess_S_CNIC" ColumnName="Mess_S_CNIC" />
+          <ScalarProperty Name="MessCurrentDate" ColumnName="MessCurrentDate" />
+          <ScalarProperty Name="MessLunch" ColumnName="MessLunch" />
+          <ScalarProperty Name="MessDinner" ColumnName="MessDinner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbMessAttendances">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbMessAttendance">
+        <MappingFragment StoreEntitySet="dbMessAttendance">
+          <ScalarProperty Name="MessAid" ColumnName="MessAid" />
+          <ScalarProperty Name="MessA_RoomId" ColumnName="MessA_RoomId" />
+          <ScalarProperty Name="MessA_S_CNIC" ColumnName="MessA_S_CNIC" />
+          <ScalarProperty Name="MessA_FoodId" ColumnName="MessA_FoodId" />
+          <ScalarProperty Name="MessACurrentDate" ColumnName="MessACurrentDate" />
+          <ScalarProperty Name="MessACount" ColumnName="MessACount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbRooms">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbRoom">
+        <MappingFragment StoreEntitySet="dbRoom">
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="Room_HostelId" ColumnName="Room_HostelId" />
+          <ScalarProperty Name="RoomNO" ColumnName="RoomNO" />
+          <ScalarProperty Name="RoomCapacity" ColumnName="RoomCapacity" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dbStudents">
+      <EntityTypeMapping TypeName="dbHostelManagementModel.dbStudent">
+        <MappingFragment StoreEntitySet="dbStudent">
+          <ScalarProperty Name="S_CNIC" ColumnName="S_CNIC" />
+          <ScalarProperty Name="S_RegNO" ColumnName="S_RegNO" />
+          <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+          <ScalarProperty Name="S_FatherName" ColumnName="S_FatherName" />
+          <ScalarProperty Name="S_Address" ColumnName="S_Address" />
+          <ScalarProperty Name="S_PhoneNo" ColumnName="S_PhoneNo" />
+          <ScalarProperty Name="S_DOB" ColumnName="S_DOB" />
+          <ScalarProperty Name="S_CurrentDate" ColumnName="S_CurrentDate" />
+          <ScalarProperty Name="S_Email" ColumnName="S_Email" />
+          <ScalarProperty Name="S_Password" ColumnName="S_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

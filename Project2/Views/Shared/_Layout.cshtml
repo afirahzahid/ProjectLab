@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .mynav_navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+            .mynav_navbar a {
+                float: left;
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+        .mynav_dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+            .mynav_dropdown .mynav_dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+
+            .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+                background-color: red;
+            }
+
+        .mynav_dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .mynav_dropdown-content a {
+                float: none;
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+                .mynav_dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .mynav_dropdown:hover .mynav_dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="background-image:url(../img/blur1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 750px;
+    position:relative;
+      ">
+    <style>
+        a:link {
+            color: darkblue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div style="color: white;text-align:center; border: 50px solid #000080; background-color: #000080" class="mynav_navbar">
+        <a  @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a>
+        <a  @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a>
+        <a  @Html.ActionLink("Contact Us", "Contact", "Home", null, new { style = "color:white" })</a>
+        <a style="margin-left: 900px"></a>
+        <div class="mynav_dropdown">
+            <button class="mynav_dropbtn">
+                Register
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="mynav_dropdown-content">
+                <a @Html.ActionLink("Student", "Register", "Account", null, new { style = "color:#000080" })</a>
+                <a @Html.ActionLink("Employee", "ERegister", "Account", null, new { style = "color:#000080" })</a>
+             
+            </div>
+        </div>
+        <a> @Html.ActionLink("Login(Student)", "Login", "Account", null, new { style = "color:white" }) </a>
+        <a> @Html.ActionLink("Login(Employee)", "ELogin", "Account", null, new { style = "color:white" })</a>
+    </div>
+    <h2 style="color: darkblue;text-align:center; font-size: 50px"> Hostel Management System</h2>
+
+    <div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <footer style="color: white;text-align:center; border: 3px solid darkblue; background-color: darkblue;margin-top:500px">
+
+
+        <h5>CONTACT US</h5>
+        <i class="fa fa-map-marker"></i>University of Engineering and technology, Lahore, Pakistan&nbsp;&nbsp;
+        <i class="fa fa-phone"></i>(+042) 666 12&nbsp;&nbsp;
+        <i class="fa fa-envelope"></i>info.HMS@gmail.com&nbsp;&nbsp;
+        <i class="fa fa-clock-o"></i>Mon - Sat, 08 AM - 06 PM
+
+
+
+        <p>
+
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved
+
+        </p>
+    </footer>
+    <!-- Footer section end -->
+</html>
+
+

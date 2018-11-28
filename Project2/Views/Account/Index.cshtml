@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Project2.Models.dbStudent>
+
+@{
+    ViewBag.Title = "Student List";
+}
+
+<h2>Students list</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.S_RegNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_FatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_PhoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_CurrentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_Email)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_RegNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_FatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_PhoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_DOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_CurrentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_Email)
+        </td>
+       
+      
+    </tr>
+}
+
+</table>

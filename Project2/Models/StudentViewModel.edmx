@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbHostelManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dbAllotment">
+          <Key>
+            <PropertyRef Name="AllotmentId" />
+          </Key>
+          <Property Name="AllotmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_RoomId" Type="int" Nullable="false" />
+          <Property Name="A_StudentId" Type="bigint" Nullable="false" />
+          <Property Name="A_Status" Type="bit" Nullable="false" />
+          <Property Name="A_DateIN" Type="date" Nullable="false" />
+          <Property Name="A_DateOut" Type="date" />
+        </EntityType>
+        <EntityType Name="dbEmployee">
+          <Key>
+            <PropertyRef Name="EmpCNIC" />
+          </Key>
+          <Property Name="EmpCNIC" Type="bigint" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="EmpFatherName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="EmpPhoneNo" Type="bigint" Nullable="false" />
+          <Property Name="EmpDOB" Type="datetime" Nullable="false" />
+          <Property Name="EmpDesignation" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpIsActive" Type="bit" Nullable="false" />
+          <Property Name="EmpEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmpHostelName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbFoodItems">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FoodPrice" Type="int" Nullable="false" />
+          <Property Name="FoodDay" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FoodType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Food_MenuId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbHostel">
+          <Key>
+            <PropertyRef Name="HostelId" />
+          </Key>
+          <Property Name="HostelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HostelName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HostelType" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbLogin">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginPass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginType" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Menu_HostelId" Type="int" />
+          <Property Name="Menu_StartDate" Type="date" Nullable="false" />
+          <Property Name="Menu_EndDate" Type="date" />
+          <Property Name="Menu_Comments" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="dbMess">
+          <Key>
+            <PropertyRef Name="MessId" />
+          </Key>
+          <Property Name="MessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mess_S_CNIC" Type="bigint" Nullable="false" />
+          <Property Name="MessCurrentDate" Type="date" Nullable="false" />
+          <Property Name="MessLunch" Type="int" />
+          <Property Name="MessDinner" Type="int" />
+        </EntityType>
+        <EntityType Name="dbMessAttendance">
+          <Key>
+            <PropertyRef Name="MessAid" />
+          </Key>
+          <Property Name="MessAid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessA_RoomId" Type="int" Nullable="false" />
+          <Property Name="MessA_S_CNIC" Type="bigint" Nullable="false" />
+          <Property Name="MessA_FoodId" Type="int" Nullable="false" />
+          <Property Name="MessACurrentDate" Type="date" Nullable="false" />
+          <Property Name="MessACount" Type="int" />
+        </EntityType>
+        <EntityType Name="dbRoom">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Room_HostelId" Type="int" />
+          <Property Name="RoomNO" Type="int" Nullable="false" />
+          <Property Name="RoomCapacity" Type="tinyint" />
+          <Property Name="Details" Type="varchar" MaxLength="900" />
+        </EntityType>
+        <EntityType Name="dbStudent">
+          <Key>
+            <PropertyRef Name="S_CNIC" />
+          </Key>
+          <Property Name="S_CNIC" Type="bigint" Nullable="false" />
+          <Property Name="S_RegNO" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="S_Name" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="S_FatherName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="S_Address" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="S_PhoneNo" Type="bigint" Nullable="false" />
+          <Property Name="S_DOB" Type="date" Nullable="false" />
+          <Property Name="S_CurrentDate" Type="datetime" Nullable="false" />
+          <Property Name="S_Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="S_Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__dbAllotme__A_Roo__37A5467C">
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="1" />
+          <End Role="dbAllotment" Type="Self.dbAllotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbRoom">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="dbAllotment">
+              <PropertyRef Name="A_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbAllotme__A_Stu__38996AB5">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbAllotment" Type="Self.dbAllotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbAllotment">
+              <PropertyRef Name="A_StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK__dbEmploye__EmpHo__31EC6D26' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK__dbEmploye__EmpHo__31EC6D26" />-->
+        <Association Name="FK__dbFoodIte__Food___412EB0B6">
+          <End Role="dbMenu" Type="Self.dbMenu" Multiplicity="1" />
+          <End Role="dbFoodItems" Type="Self.dbFoodItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMenu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="dbFoodItems">
+              <PropertyRef Name="Food_MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMenu__Menu_Hos__3B75D760">
+          <End Role="dbHostel" Type="Self.dbHostel" Multiplicity="0..1" />
+          <End Role="dbMenu" Type="Self.dbMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="dbMenu">
+              <PropertyRef Name="Menu_HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMess__Mess_S_C__3E52440B">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbMess" Type="Self.dbMess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbMess">
+              <PropertyRef Name="Mess_S_CNIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__440B1D61">
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbRoom">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__44FF419A">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_S_CNIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__45F365D3">
+          <End Role="dbFoodItems" Type="Self.dbFoodItems" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbFoodItems">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbRoom__Room_Hos__34C8D9D1">
+          <End Role="dbHostel" Type="Self.dbHostel" Multiplicity="0..1" />
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="dbRoom">
+              <PropertyRef Name="Room_HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbHostelManagementModelStoreContainer">
+          <EntitySet Name="dbAllotment" EntityType="Self.dbAllotment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbEmployee" EntityType="Self.dbEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbFoodItems" EntityType="Self.dbFoodItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbHostel" EntityType="Self.dbHostel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbLogin" EntityType="Self.dbLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbMenu" EntityType="Self.dbMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbMess" EntityType="Self.dbMess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbMessAttendance" EntityType="Self.dbMessAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbRoom" EntityType="Self.dbRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dbStudent" EntityType="Self.dbStudent" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__dbAllotme__A_Roo__37A5467C" Association="Self.FK__dbAllotme__A_Roo__37A5467C">
+            <End Role="dbRoom" EntitySet="dbRoom" />
+            <End Role="dbAllotment" EntitySet="dbAllotment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbAllotme__A_Stu__38996AB5" Association="Self.FK__dbAllotme__A_Stu__38996AB5">
+            <End Role="dbStudent" EntitySet="dbStudent" />
+            <End Role="dbAllotment" EntitySet="dbAllotment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbFoodIte__Food___412EB0B6" Association="Self.FK__dbFoodIte__Food___412EB0B6">
+            <End Role="dbMenu" EntitySet="dbMenu" />
+            <End Role="dbFoodItems" EntitySet="dbFoodItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMenu__Menu_Hos__3B75D760" Association="Self.FK__dbMenu__Menu_Hos__3B75D760">
+            <End Role="dbHostel" EntitySet="dbHostel" />
+            <End Role="dbMenu" EntitySet="dbMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMess__Mess_S_C__3E52440B" Association="Self.FK__dbMess__Mess_S_C__3E52440B">
+            <End Role="dbStudent" EntitySet="dbStudent" />
+            <End Role="dbMess" EntitySet="dbMess" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__440B1D61" Association="Self.FK__dbMessAtt__MessA__440B1D61">
+            <End Role="dbRoom" EntitySet="dbRoom" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__44FF419A" Association="Self.FK__dbMessAtt__MessA__44FF419A">
+            <End Role="dbStudent" EntitySet="dbStudent" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__45F365D3" Association="Self.FK__dbMessAtt__MessA__45F365D3">
+            <End Role="dbFoodItems" EntitySet="dbFoodItems" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbRoom__Room_Hos__34C8D9D1" Association="Self.FK__dbRoom__Room_Hos__34C8D9D1">
+            <End Role="dbHostel" EntitySet="dbHostel" />
+            <End Role="dbRoom" EntitySet="dbRoom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbHostelManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dbAllotment">
+          <Key>
+            <PropertyRef Name="AllotmentId" />
+          </Key>
+          <Property Name="AllotmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_RoomId" Type="Int32" Nullable="false" />
+          <Property Name="A_StudentId" Type="Int64" Nullable="false" />
+          <Property Name="A_Status" Type="Boolean" Nullable="false" />
+          <Property Name="A_DateIN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="A_DateOut" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="dbRoom" Relationship="Self.FK__dbAllotme__A_Roo__37A5467C" FromRole="dbAllotment" ToRole="dbRoom" />
+          <NavigationProperty Name="dbStudent" Relationship="Self.FK__dbAllotme__A_Stu__38996AB5" FromRole="dbAllotment" ToRole="dbStudent" />
+        </EntityType>
+        <EntityType Name="dbEmployee">
+          <Key>
+            <PropertyRef Name="EmpCNIC" />
+          </Key>
+          <Property Name="EmpCNIC" Type="Int64" Nullable="false" />
+          <Property Name="EmpName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpFatherName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPhoneNo" Type="Int64" Nullable="false" />
+          <Property Name="EmpDOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EmpDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpIsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EmpEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpHostelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dbFoodItem">
+          <Key>
+            <PropertyRef Name="FoodId" />
+          </Key>
+          <Property Name="FoodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FoodPrice" Type="Int32" Nullable="false" />
+          <Property Name="FoodDay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FoodType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Food_MenuId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="dbMenu" Relationship="Self.FK__dbFoodIte__Food___412EB0B6" FromRole="dbFoodItems" ToRole="dbMenu" />
+          <NavigationProperty Name="dbMessAttendances" Relationship="Self.FK__dbMessAtt__MessA__45F365D3" FromRole="dbFoodItems" ToRole="dbMessAttendance" />
+        </EntityType>
+        <EntityType Name="dbHostel">
+          <Key>
+            <PropertyRef Name="HostelId" />
+          </Key>
+          <Property Name="HostelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HostelName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HostelType" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="dbMenus" Relationship="Self.FK__dbMenu__Menu_Hos__3B75D760" FromRole="dbHostel" ToRole="dbMenu" />
+          <NavigationProperty Name="dbRooms" Relationship="Self.FK__dbRoom__Room_Hos__34C8D9D1" FromRole="dbHostel" ToRole="dbRoom" />
+        </EntityType>
+        <EntityType Name="dbLogin">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoginPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoginType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Menu_HostelId" Type="Int32" />
+          <Property Name="Menu_StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Menu_EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Menu_Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbFoodItems" Relationship="Self.FK__dbFoodIte__Food___412EB0B6" FromRole="dbMenu" ToRole="dbFoodItems" />
+          <NavigationProperty Name="dbHostel" Relationship="Self.FK__dbMenu__Menu_Hos__3B75D760" FromRole="dbMenu" ToRole="dbHostel" />
+        </EntityType>
+        <EntityType Name="dbMess">
+          <Key>
+            <PropertyRef Name="MessId" />
+          </Key>
+          <Property Name="MessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mess_S_CNIC" Type="Int64" Nullable="false" />
+          <Property Name="MessCurrentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MessLunch" Type="Int32" />
+          <Property Name="MessDinner" Type="Int32" />
+          <NavigationProperty Name="dbStudent" Relationship="Self.FK__dbMess__Mess_S_C__3E52440B" FromRole="dbMess" ToRole="dbStudent" />
+        </EntityType>
+        <EntityType Name="dbMessAttendance">
+          <Key>
+            <PropertyRef Name="MessAid" />
+          </Key>
+          <Property Name="MessAid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessA_RoomId" Type="Int32" Nullable="false" />
+          <Property Name="MessA_S_CNIC" Type="Int64" Nullable="false" />
+          <Property Name="MessA_FoodId" Type="Int32" Nullable="false" />
+          <Property Name="MessACurrentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MessACount" Type="Int32" />
+          <NavigationProperty Name="dbFoodItem" Relationship="Self.FK__dbMessAtt__MessA__45F365D3" FromRole="dbMessAttendance" ToRole="dbFoodItems" />
+          <NavigationProperty Name="dbRoom" Relationship="Self.FK__dbMessAtt__MessA__440B1D61" FromRole="dbMessAttendance" ToRole="dbRoom" />
+          <NavigationProperty Name="dbStudent" Relationship="Self.FK__dbMessAtt__MessA__44FF419A" FromRole="dbMessAttendance" ToRole="dbStudent" />
+        </EntityType>
+        <EntityType Name="dbRoom">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Room_HostelId" Type="Int32" />
+          <Property Name="RoomNO" Type="Int32" Nullable="false" />
+          <Property Name="RoomCapacity" Type="Byte" />
+          <Property Name="Details" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="dbAllotments" Relationship="Self.FK__dbAllotme__A_Roo__37A5467C" FromRole="dbRoom" ToRole="dbAllotment" />
+          <NavigationProperty Name="dbHostel" Relationship="Self.FK__dbRoom__Room_Hos__34C8D9D1" FromRole="dbRoom" ToRole="dbHostel" />
+          <NavigationProperty Name="dbMessAttendances" Relationship="Self.FK__dbMessAtt__MessA__440B1D61" FromRole="dbRoom" ToRole="dbMessAttendance" />
+        </EntityType>
+        <EntityType Name="dbStudent">
+          <Key>
+            <PropertyRef Name="S_CNIC" />
+          </Key>
+          <Property Name="S_CNIC" Type="Int64" Nullable="false" />
+          <Property Name="S_RegNO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_Name" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_FatherName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_Address" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_PhoneNo" Type="Int64" Nullable="false" />
+          <Property Name="S_DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="S_CurrentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="S_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="dbAllotments" Relationship="Self.FK__dbAllotme__A_Stu__38996AB5" FromRole="dbStudent" ToRole="dbAllotment" />
+          <NavigationProperty Name="dbMesses" Relationship="Self.FK__dbMess__Mess_S_C__3E52440B" FromRole="dbStudent" ToRole="dbMess" />
+          <NavigationProperty Name="dbMessAttendances" Relationship="Self.FK__dbMessAtt__MessA__44FF419A" FromRole="dbStudent" ToRole="dbMessAttendance" />
+        </EntityType>
+        <Association Name="FK__dbAllotme__A_Roo__37A5467C">
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="1" />
+          <End Role="dbAllotment" Type="Self.dbAllotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbRoom">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="dbAllotment">
+              <PropertyRef Name="A_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbAllotme__A_Stu__38996AB5">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbAllotment" Type="Self.dbAllotment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbAllotment">
+              <PropertyRef Name="A_StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbFoodIte__Food___412EB0B6">
+          <End Role="dbMenu" Type="Self.dbMenu" Multiplicity="1" />
+          <End Role="dbFoodItems" Type="Self.dbFoodItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMenu">
+              <PropertyRef Name="MenuId" />
+            </Principal>
+            <Dependent Role="dbFoodItems">
+              <PropertyRef Name="Food_MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__45F365D3">
+          <End Role="dbFoodItems" Type="Self.dbFoodItem" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbFoodItems">
+              <PropertyRef Name="FoodId" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_FoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMenu__Menu_Hos__3B75D760">
+          <End Role="dbHostel" Type="Self.dbHostel" Multiplicity="0..1" />
+          <End Role="dbMenu" Type="Self.dbMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="dbMenu">
+              <PropertyRef Name="Menu_HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbRoom__Room_Hos__34C8D9D1">
+          <End Role="dbHostel" Type="Self.dbHostel" Multiplicity="0..1" />
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbHostel">
+              <PropertyRef Name="HostelId" />
+            </Principal>
+            <Dependent Role="dbRoom">
+              <PropertyRef Name="Room_HostelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMess__Mess_S_C__3E52440B">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbMess" Type="Self.dbMess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbMess">
+              <PropertyRef Name="Mess_S_CNIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__440B1D61">
+          <End Role="dbRoom" Type="Self.dbRoom" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbRoom">
+              <PropertyRef Name="RoomId" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dbMessAtt__MessA__44FF419A">
+          <End Role="dbStudent" Type="Self.dbStudent" Multiplicity="1" />
+          <End Role="dbMessAttendance" Type="Self.dbMessAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbStudent">
+              <PropertyRef Name="S_CNIC" />
+            </Principal>
+            <Dependent Role="dbMessAttendance">
+              <PropertyRef Name="MessA_S_CNIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbHostelManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dbAllotments" EntityType="Self.dbAllotment" />
+          <EntitySet Name="dbEmployees" EntityType="Self.dbEmployee" />
+          <EntitySet Name="dbFoodItems" EntityType="Self.dbFoodItem" />
+          <EntitySet Name="dbHostels" EntityType="Self.dbHostel" />
+          <EntitySet Name="dbLogins" EntityType="Self.dbLogin" />
+          <EntitySet Name="dbMenus" EntityType="Self.dbMenu" />
+          <EntitySet Name="dbMesses" EntityType="Self.dbMess" />
+          <EntitySet Name="dbMessAttendances" EntityType="Self.dbMessAttendance" />
+          <EntitySet Name="dbRooms" EntityType="Self.dbRoom" />
+          <EntitySet Name="dbStudents" EntityType="Self.dbStudent" />
+          <AssociationSet Name="FK__dbAllotme__A_Roo__37A5467C" Association="Self.FK__dbAllotme__A_Roo__37A5467C">
+            <End Role="dbRoom" EntitySet="dbRooms" />
+            <End Role="dbAllotment" EntitySet="dbAllotments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbAllotme__A_Stu__38996AB5" Association="Self.FK__dbAllotme__A_Stu__38996AB5">
+            <End Role="dbStudent" EntitySet="dbStudents" />
+            <End Role="dbAllotment" EntitySet="dbAllotments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbFoodIte__Food___412EB0B6" Association="Self.FK__dbFoodIte__Food___412EB0B6">
+            <End Role="dbMenu" EntitySet="dbMenus" />
+            <End Role="dbFoodItems" EntitySet="dbFoodItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__45F365D3" Association="Self.FK__dbMessAtt__MessA__45F365D3">
+            <End Role="dbFoodItems" EntitySet="dbFoodItems" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMenu__Menu_Hos__3B75D760" Association="Self.FK__dbMenu__Menu_Hos__3B75D760">
+            <End Role="dbHostel" EntitySet="dbHostels" />
+            <End Role="dbMenu" EntitySet="dbMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbRoom__Room_Hos__34C8D9D1" Association="Self.FK__dbRoom__Room_Hos__34C8D9D1">
+            <End Role="dbHostel" EntitySet="dbHostels" />
+            <End Role="dbRoom" EntitySet="dbRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMess__Mess_S_C__3E52440B" Association="Self.FK__dbMess__Mess_S_C__3E52440B">
+            <End Role="dbStudent" EntitySet="dbStudents" />
+            <End Role="dbMess" EntitySet="dbMesses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__440B1D61" Association="Self.FK__dbMessAtt__MessA__440B1D61">
+            <End Role="dbRoom" EntitySet="dbRooms" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dbMessAtt__MessA__44FF419A" Association="Self.FK__dbMessAtt__MessA__44FF419A">
+            <End Role="dbStudent" EntitySet="dbStudents" />
+            <End Role="dbMessAttendance" EntitySet="dbMessAttendances" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbHostelManagementModelStoreContainer" CdmEntityContainer="dbHostelManagementEntities">
+          <EntitySetMapping Name="dbAllotments">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbAllotment">
+              <MappingFragment StoreEntitySet="dbAllotment">
+                <ScalarProperty Name="AllotmentId" ColumnName="AllotmentId" />
+                <ScalarProperty Name="A_RoomId" ColumnName="A_RoomId" />
+                <ScalarProperty Name="A_StudentId" ColumnName="A_StudentId" />
+                <ScalarProperty Name="A_Status" ColumnName="A_Status" />
+                <ScalarProperty Name="A_DateIN" ColumnName="A_DateIN" />
+                <ScalarProperty Name="A_DateOut" ColumnName="A_DateOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbEmployees">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbEmployee">
+              <MappingFragment StoreEntitySet="dbEmployee">
+                <ScalarProperty Name="EmpCNIC" ColumnName="EmpCNIC" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpFatherName" ColumnName="EmpFatherName" />
+                <ScalarProperty Name="EmpPhoneNo" ColumnName="EmpPhoneNo" />
+                <ScalarProperty Name="EmpDOB" ColumnName="EmpDOB" />
+                <ScalarProperty Name="EmpDesignation" ColumnName="EmpDesignation" />
+                <ScalarProperty Name="EmpIsActive" ColumnName="EmpIsActive" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="EmpPassword" ColumnName="EmpPassword" />
+                <ScalarProperty Name="EmpHostelName" ColumnName="EmpHostelName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbFoodItems">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbFoodItem">
+              <MappingFragment StoreEntitySet="dbFoodItems">
+                <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+                <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+                <ScalarProperty Name="FoodPrice" ColumnName="FoodPrice" />
+                <ScalarProperty Name="FoodDay" ColumnName="FoodDay" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+                <ScalarProperty Name="Food_MenuId" ColumnName="Food_MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbHostels">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbHostel">
+              <MappingFragment StoreEntitySet="dbHostel">
+                <ScalarProperty Name="HostelId" ColumnName="HostelId" />
+                <ScalarProperty Name="HostelName" ColumnName="HostelName" />
+                <ScalarProperty Name="HostelType" ColumnName="HostelType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbLogins">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbLogin">
+              <MappingFragment StoreEntitySet="dbLogin">
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="LoginEmail" ColumnName="LoginEmail" />
+                <ScalarProperty Name="LoginPass" ColumnName="LoginPass" />
+                <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMenus">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbMenu">
+              <MappingFragment StoreEntitySet="dbMenu">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="Menu_HostelId" ColumnName="Menu_HostelId" />
+                <ScalarProperty Name="Menu_StartDate" ColumnName="Menu_StartDate" />
+                <ScalarProperty Name="Menu_EndDate" ColumnName="Menu_EndDate" />
+                <ScalarProperty Name="Menu_Comments" ColumnName="Menu_Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMesses">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbMess">
+              <MappingFragment StoreEntitySet="dbMess">
+                <ScalarProperty Name="MessId" ColumnName="MessId" />
+                <ScalarProperty Name="Mess_S_CNIC" ColumnName="Mess_S_CNIC" />
+                <ScalarProperty Name="MessCurrentDate" ColumnName="MessCurrentDate" />
+                <ScalarProperty Name="MessLunch" ColumnName="MessLunch" />
+                <ScalarProperty Name="MessDinner" ColumnName="MessDinner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMessAttendances">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbMessAttendance">
+              <MappingFragment StoreEntitySet="dbMessAttendance">
+                <ScalarProperty Name="MessAid" ColumnName="MessAid" />
+                <ScalarProperty Name="MessA_RoomId" ColumnName="MessA_RoomId" />
+                <ScalarProperty Name="MessA_S_CNIC" ColumnName="MessA_S_CNIC" />
+                <ScalarProperty Name="MessA_FoodId" ColumnName="MessA_FoodId" />
+                <ScalarProperty Name="MessACurrentDate" ColumnName="MessACurrentDate" />
+                <ScalarProperty Name="MessACount" ColumnName="MessACount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbRooms">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbRoom">
+              <MappingFragment StoreEntitySet="dbRoom">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="Room_HostelId" ColumnName="Room_HostelId" />
+                <ScalarProperty Name="RoomNO" ColumnName="RoomNO" />
+                <ScalarProperty Name="RoomCapacity" ColumnName="RoomCapacity" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbStudents">
+            <EntityTypeMapping TypeName="dbHostelManagementModel.dbStudent">
+              <MappingFragment StoreEntitySet="dbStudent">
+                <ScalarProperty Name="S_CNIC" ColumnName="S_CNIC" />
+                <ScalarProperty Name="S_RegNO" ColumnName="S_RegNO" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="S_FatherName" ColumnName="S_FatherName" />
+                <ScalarProperty Name="S_Address" ColumnName="S_Address" />
+                <ScalarProperty Name="S_PhoneNo" ColumnName="S_PhoneNo" />
+                <ScalarProperty Name="S_DOB" ColumnName="S_DOB" />
+                <ScalarProperty Name="S_CurrentDate" ColumnName="S_CurrentDate" />
+                <ScalarProperty Name="S_Email" ColumnName="S_Email" />
+                <ScalarProperty Name="S_Password" ColumnName="S_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
