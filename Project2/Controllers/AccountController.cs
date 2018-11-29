@@ -47,38 +47,43 @@ namespace Project2.Controllers
             return View(s);
         }
         // Login
+
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Login(dbStudent s)
+        public ActionResult Login(dbLogin l)
         {
             using (dbHostelManagementEntities db = new dbHostelManagementEntities())
             {
-                var usr = db.dbStudents.SingleOrDefault(u => u.S_Email == s.S_Email );
+                var usr = db.dbLogins.SingleOrDefault(u => u.LoginEmail == l.LoginEmail);
                 if (usr != null)
                 {
-                    if(usr.S_Password == s.S_Password)
+                    if (usr.LoginPass == l.LoginPass)
                     {
-                        Session["S_CNIc"] = usr.S_CNIC.ToString();
-                        Session["S_Email"] = usr.S_Email.ToString();
-                        return RedirectToAction("LoggedIn");
+                        if (usr.LoginType == "s")
+                        {
+                            Session["S_Email"] = usr.LoginEmail.ToString();
+                            return RedirectToAction("LoggedIn");
+                        }
+                        else
+                        {
+                            Session["EmpEmail"] = usr.LoginEmail.ToString();
+                            return RedirectToAction("ELoggedIn");
+                        }
                     }
-                    else
-                    {
-                        ModelState.AddModelError("", "Email or Password is wrong.");
-                    }
-
                 }
                 else
                 {
                     ModelState.AddModelError("", "Email or Password is wrong.");
                 }
-          
             }
-            return View(s);
+            return View(l);
         }
+    }
         public ActionResult LoggedIn()
         {
             if(Session["S_CNIC"] != null)
