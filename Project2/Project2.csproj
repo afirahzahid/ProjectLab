@@ -290,7 +290,6 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ERegister.cshtml" />
     <Content Include="Views\Account\EmployeList.cshtml" />
-    <Content Include="Views\Account\ELogin.cshtml" />
     <Content Include="Views\Account\ELoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>

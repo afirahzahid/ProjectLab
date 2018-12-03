@@ -84,7 +84,7 @@
         <a  @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a>
         <a  @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a>
         <a  @Html.ActionLink("Contact Us", "Contact", "Home", null, new { style = "color:white" })</a>
-        <a style="margin-left: 900px"></a>
+        <a style="margin-left: 1100px"></a>
         <div class="mynav_dropdown">
             <button class="mynav_dropbtn">
                 Register
@@ -93,11 +93,10 @@
             <div class="mynav_dropdown-content">
                 <a @Html.ActionLink("Student", "Register", "Account", null, new { style = "color:#000080" })</a>
                 <a @Html.ActionLink("Employee", "ERegister", "Account", null, new { style = "color:#000080" })</a>
-             
             </div>
         </div>
-        <a> @Html.ActionLink("Login(Student)", "Login", "Account", null, new { style = "color:white" }) </a>
-        <a> @Html.ActionLink("Login(Employee)", "ELogin", "Account", null, new { style = "color:white" })</a>
+        <a> @Html.ActionLink("Login", "Login", "Account", null, new { style = "color:white" }) </a>
+       
     </div>
     <h2 style="color: darkblue;text-align:center; font-size: 50px"> Hostel Management System</h2>
 

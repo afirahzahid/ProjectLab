@@ -35,6 +35,11 @@ namespace Project2.Controllers
             {
                 using (dbHostelManagementEntities db = new dbHostelManagementEntities())
                 {
+                    dbLogin l = new dbLogin();
+                    l.LoginEmail = s.S_Email;
+                    l.LoginPass = s.S_Password;
+                    l.LoginType = "s";
+                    db.dbLogins.Add(l);
                     db.dbStudents.Add(s);
                     db.SaveChanges();
                     ModelState.Clear();
@@ -83,10 +88,9 @@ namespace Project2.Controllers
             }
             return View(l);
         }
-    }
         public ActionResult LoggedIn()
         {
-            if(Session["S_CNIC"] != null)
+            if (Session["S_Email"] != null)
             {
                 return View();
             }
@@ -110,6 +114,11 @@ namespace Project2.Controllers
             {
                 using (dbHostelManagementEntities db = new dbHostelManagementEntities())
                 {
+                    dbLogin l = new dbLogin();
+                    l.LoginEmail = e.EmpEmail;
+                    l.LoginPass = e.EmpPassword;
+                    l.LoginType = "e";
+                    db.dbLogins.Add(l);
                     db.dbEmployees.Add(e);
                     db.SaveChanges();
                     ModelState.Clear();
@@ -131,7 +140,7 @@ namespace Project2.Controllers
         {
             using (dbHostelManagementEntities db = new dbHostelManagementEntities())
             {
-                var usr = db.dbEmployees.SingleOrDefault(u => u.EmpEmail == e.EmpEmail) ;
+                var usr = db.dbEmployees.SingleOrDefault(u => u.EmpEmail == e.EmpEmail);
                 if (usr != null)
                 {
                     if (usr.EmpPassword == e.EmpPassword)
@@ -154,7 +163,7 @@ namespace Project2.Controllers
         }
         public ActionResult ELoggedIn()
         {
-            if (Session["EmpCNIC"] != null)
+            if (Session["EmpEmail"] != null)
             {
                 return View();
             }
@@ -183,3 +192,4 @@ namespace Project2.Controllers
 
     }
 }
+        

@@ -34,7 +34,7 @@ namespace Project2.Models
             {
                 dbHostelManagementEntities db = new dbHostelManagementEntities();
                 var userWithTheSameCNIC = db.dbStudents.SingleOrDefault(
-                    u => u.S_CNIC == (int)value);
+                    u => u.S_CNIC == (Int64)value);
                 return userWithTheSameCNIC == null;
             }
 
