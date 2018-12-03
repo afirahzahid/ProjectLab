@@ -11,11 +11,17 @@ namespace Project2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class dbLogin
     {
         public int LoginId { get; set; }
+        [Display(Name = "Email Id")]
         public string LoginEmail { get; set; }
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Password is Required")]
         public string LoginPass { get; set; }
         public string LoginType { get; set; }
     }
