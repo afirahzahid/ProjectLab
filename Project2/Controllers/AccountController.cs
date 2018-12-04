@@ -180,6 +180,32 @@ namespace Project2.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Admin(dbLogin l)
+        {
+            if (l.LoginEmail == "admin123@gmail.com")
+            {
+                if (l.LoginPass == "admin123")
+                {
+                    return RedirectToAction("ALoggedin");
+                }
+            }
+            else
+            {
+                ViewBag.message3 = "Login Failed";
+            }
+            return RedirectToAction("Admin");
+        }
+
+        public ActionResult ALoggedin()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult doesUserNameExist(string S_RegNo)
         {

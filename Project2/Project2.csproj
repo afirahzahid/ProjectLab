@@ -291,6 +291,8 @@
     <Content Include="Views\Account\ERegister.cshtml" />
     <Content Include="Views\Account\EmployeList.cshtml" />
     <Content Include="Views\Account\ELoggedIn.cshtml" />
+    <Content Include="Views\Account\Admin.cshtml" />
+    <Content Include="Views\Account\ALoggedin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
