@@ -1,0 +1,90 @@
+﻿@model Project2.Models.dbEmployee
+
+@{
+    ViewBag.Title = "EDetails";
+}
+
+<h2>EDetails</h2>
+
+<div>
+    <h4>dbEmployee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpFatherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpFatherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpPhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpPhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpDesignation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpDesignation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpIsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpIsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpHostelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpHostelName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpCNIC }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

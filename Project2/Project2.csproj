@@ -287,12 +287,17 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\ERegister.cshtml" />
     <Content Include="Views\Account\EmployeList.cshtml" />
     <Content Include="Views\Account\ELoggedIn.cshtml" />
     <Content Include="Views\Account\Admin.cshtml" />
     <Content Include="Views\Account\ALoggedin.cshtml" />
+    <Content Include="Views\Account\SIndex.cshtml" />
+    <Content Include="Views\Account\Allotment.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\SDetails.cshtml" />
+    <Content Include="Views\Account\EDetails.cshtml" />
+    <Content Include="Views\Account\EIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

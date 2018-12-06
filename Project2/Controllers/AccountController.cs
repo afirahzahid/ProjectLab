@@ -13,14 +13,150 @@ namespace Project2.Controllers
         private object db;
 
         // GET: Account
-        public ActionResult Index()
+        public ActionResult SIndex()
         {
             using (dbHostelManagementEntities db = new dbHostelManagementEntities())
             {
-                return View(db.dbStudents.ToList());
+                return View(db.dbLogins.ToList());
             }
-            
+
         }
+
+        public ActionResult EIndex()
+        {
+            using (dbHostelManagementEntities db = new dbHostelManagementEntities())
+            {
+                return View(db.dbLogins.ToList());
+            }
+
+        }
+
+        public ActionResult Allotment(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dbStudent student = db.dbStudents.Find(Convert.ToInt64(id));
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            int ss = db.dbAllotments.Where(x => x.A_StudentId == student.S_CNIC).Count();
+            if (ss == 0)
+            {
+                dbAllotment entry = new dbAllotment();
+                entry.A_StudentId = Convert.ToInt64(id);
+                entry.A_Status = true;
+                entry.A_DateIN = DateTime.Today;
+                int j = db.dbRooms.Count();
+                for (int k = 0; k < j; k++)
+                {
+                    var room = db.dbRooms.ToArray()[k];
+                    int? capacity = room.RoomCapacity;
+                    int alreadyalloted = db.dbAllotments.Where(x => x.A_RoomId == room.RoomId).Count();
+                    if (alreadyalloted < capacity)
+                    {
+                        entry.A_RoomId = room.RoomId;
+                        break;
+                    }
+                }
+                if (entry.A_RoomId == 0)
+                {
+                    ModelState.AddModelError("", "No more rooms are available.");
+                }
+                db.dbAllotments.Add(entry);
+                db.SaveChanges();
+            }
+            else
+            {
+                ModelState.AddModelError("", "This Student has already been alloted a room");
+            }
+            return RedirectToAction("StudentsList");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dbLogin user = db.dbLogins.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "LoginId, LoginEmail, LoginPass, LoginType, IsApproved")] dbLogin user)
+        {
+            try
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                if (user.LoginType == "s")
+                {
+                    return RedirectToAction("SIndex");
+                }
+                else
+                {
+                    return RedirectToAction("EIndex");
+                }
+
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting  
+                        // the current instance as InnerException  
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
+            }
+        }
+
+        public ActionResult SDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dbLogin user = db.dbLogins.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            dbStudent student = db.dbStudents.SingleOrDefault(x => x.S_Email == user.LoginEmail);
+            return View(student);
+        }
+
+        public ActionResult EDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dbLogin user = db.dbLogins.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            dbEmployee emp = db.dbEmployees.SingleOrDefault(x => x.EmpEmail == user.LoginEmail);
+            return View(emp);
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -35,10 +171,12 @@ namespace Project2.Controllers
             {
                 using (dbHostelManagementEntities db = new dbHostelManagementEntities())
                 {
-                    dbLogin l = new dbLogin();
-                    l.LoginEmail = s.S_Email;
-                    l.LoginPass = s.S_Password;
-                    l.LoginType = "s";
+                    dbLogin l = new dbLogin
+                    {
+                        LoginEmail = s.S_Email,
+                        LoginPass = s.S_Password,
+                        LoginType = "s",
+                    };
                     db.dbLogins.Add(l);
                     db.dbStudents.Add(s);
                     db.SaveChanges();
@@ -47,18 +185,15 @@ namespace Project2.Controllers
                     ViewBag.Message = "Registration Successful";
 
                 }
-                
+
             }
             return View(s);
         }
         // Login
-
-        [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Login(dbLogin l)
         {
@@ -71,13 +206,28 @@ namespace Project2.Controllers
                     {
                         if (usr.LoginType == "s")
                         {
-                            Session["S_Email"] = usr.LoginEmail.ToString();
-                            return RedirectToAction("LoggedIn");
+                            if (usr.IsApproved == true)
+                            {
+                                Session["S_Email"] = usr.LoginEmail.ToString();
+                                return RedirectToAction("LoggedIn");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Your registration request has not been approved by admin yet");
+                            }
+
                         }
                         else
                         {
-                            Session["EmpEmail"] = usr.LoginEmail.ToString();
-                            return RedirectToAction("ELoggedIn");
+                            if (usr.IsApproved == true)
+                            {
+                                Session["EmpEmail"] = usr.LoginEmail.ToString();
+                                return RedirectToAction("ELoggedIn");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Your registration request has not been approved by admin yet");
+                            }
                         }
                     }
                 }
@@ -87,17 +237,6 @@ namespace Project2.Controllers
                 }
             }
             return View(l);
-        }
-        public ActionResult LoggedIn()
-        {
-            if (Session["S_Email"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
         }
 
         [HttpGet]
@@ -114,10 +253,13 @@ namespace Project2.Controllers
             {
                 using (dbHostelManagementEntities db = new dbHostelManagementEntities())
                 {
-                    dbLogin l = new dbLogin();
-                    l.LoginEmail = e.EmpEmail;
-                    l.LoginPass = e.EmpPassword;
-                    l.LoginType = "e";
+                    dbLogin l = new dbLogin
+                    {
+                        LoginEmail = e.EmpEmail,
+                        LoginPass = e.EmpPassword,
+                        LoginType = "e",
+                        IsApproved = false
+                    };
                     db.dbLogins.Add(l);
                     db.dbEmployees.Add(e);
                     db.SaveChanges();
@@ -126,41 +268,13 @@ namespace Project2.Controllers
                     ViewBag.Message1 = "Registered Successfully";
 
                 }
+
             }
             return View(e);
         }
 
-        public ActionResult ELogin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult ELogin(dbEmployee e)
-        {
-            using (dbHostelManagementEntities db = new dbHostelManagementEntities())
-            {
-                var usr = db.dbEmployees.SingleOrDefault(u => u.EmpEmail == e.EmpEmail);
-                if (usr != null)
-                {
-                    if (usr.EmpPassword == e.EmpPassword)
-                    {
-                        Session["EmpCNIc"] = usr.EmpCNIC.ToString();
-                        Session["EmpEmail"] = usr.EmpEmail.ToString();
-                        return RedirectToAction("ELoggedIn");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Email or Password is wrong.");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Email or Password is wrong.");
-                }
-            }
-            return View(e);
-        }
+        
+        
         public ActionResult ELoggedIn()
         {
             if (Session["EmpEmail"] != null)
