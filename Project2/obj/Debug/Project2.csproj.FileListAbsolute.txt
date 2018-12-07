@@ -338,3 +338,7 @@ C:\Users\CC\Desktop\Se project2\ProjectLab\Project2\obj\Debug\Project2.csproj.Co
 C:\Users\CC\Desktop\Se project2\ProjectLab\Project2\obj\Debug\Project2.csproj.CopyComplete
 C:\Users\CC\Desktop\Se project2\ProjectLab\Project2\obj\Debug\Project2.dll
 C:\Users\CC\Desktop\Se project2\ProjectLab\Project2\obj\Debug\Project2.pdb
+C:\Users\HP\Desktop\hms\ProjectLab\Project2\obj\Debug\Project2.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\hms\ProjectLab\Project2\obj\Debug\Project2.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\hms\ProjectLab\Project2\obj\Debug\Project2.dll
+C:\Users\HP\Desktop\hms\ProjectLab\Project2\obj\Debug\Project2.pdb
