@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Project2.Models.dbLogin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoginPass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(x => x.LoginType == "s"))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginPass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsApproved)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LoginId }) |
+                @Html.ActionLink("Details", "SDetails", new { id = item.LoginId }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

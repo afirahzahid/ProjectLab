@@ -1,0 +1,90 @@
+﻿@model Project2.Models.dbStudent
+
+@{
+    ViewBag.Title = "SDetails";
+}
+
+<h2>SDetails</h2>
+
+<div>
+    <h4>dbStudent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.S_RegNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_RegNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_FatherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_FatherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_CurrentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_CurrentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.S_CNIC }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

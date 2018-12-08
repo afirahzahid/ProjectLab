@@ -1,85 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .mynav_navbar {
-            overflow: hidden;
-            background-color: #333;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-            .mynav_navbar a {
-                float: left;
-                font-size: 16px;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-        .mynav_dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-            .mynav_dropdown .mynav_dropbtn {
-                font-size: 16px;
-                border: none;
-                outline: none;
-                color: white;
-                padding: 14px 16px;
-                background-color: inherit;
-                font-family: inherit;
-                margin: 0;
-            }
-
-            .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
-                background-color: red;
-            }
-
-        .mynav_dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .mynav_dropdown-content a {
-                float: none;
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left;
-            }
-
-                .mynav_dropdown-content a:hover {
-                    background-color: #ddd;
-                }
-
-        .mynav_dropdown:hover .mynav_dropdown-content {
-            display: block;
-        }
-    </style>
-</head>
-
-<body style="background-image:url(../img/blur1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 1235px;
-    position:relative;
-      ">
-    <style>
-        a:link {
-            color: darkblue;
-            background-color: transparent;
-            text-decoration: none;
-        }
-    </style>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="LERAMIZ Landing Page Template">
+    <meta name="keywords" content="LERAMIZ, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <div style="color: white;text-align:center; border: 50px solid #000080; background-color: #000080" class="mynav_navbar">
         <a  @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a>
         <a  @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a>
@@ -107,24 +34,25 @@
     @RenderSection("scripts", required: false)
 
     <footer style="color: white;text-align:center; border: 3px solid darkblue; background-color: darkblue;margin-top:200px">
+=======
+    <!-- Favicon -->
+    <link href=@Url.Content("/Content/img/favicon.ico") rel="shortcut icon" />
+>>>>>>> 4b5544510dfe16025a9d5d4916812f13e041b7cd
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+    
 
 
-        <h5>CONTACT US</h5>
-        <i class="fa fa-map-marker"></i>University of Engineering and technology, Lahore, Pakistan&nbsp;&nbsp;
-        <i class="fa fa-phone"></i>(+042) 666 12&nbsp;&nbsp;
-        <i class="fa fa-envelope"></i>info.HMS@gmail.com&nbsp;&nbsp;
-        <i class="fa fa-clock-o"></i>Mon - Sat, 08 AM - 06 PM
+</head>
 
+<body>
+   
+    
+    <!-- Header section end -->
+    <!-- Clients section end -->
 
-
-        <p>
-
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved
-
-        </p>
-    </footer>
-    <!-- Footer section end -->
+    @RenderBody()
+</body>
 </html>
-
-
