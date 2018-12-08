@@ -58,6 +58,15 @@ namespace Project2.Models
         [Display(Name = "Date of Birth")]
         [DisplayFormat( DataFormatString = "{MM/dd/yyyy}")]
         public System.DateTime EmpDOB { get; set; }
+        public static IEnumerable<SelectListItem> EmployeesList()
+        {
+            IList<SelectListItem> i = new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Staff Member", Value = "Staff Member"},
+                new SelectListItem{Text  = "RT", Value = "RT"},
+            };
+            return i;
+        }
         [Required]
         [Display(Name = "Designation")]
         public string EmpDesignation { get; set; }

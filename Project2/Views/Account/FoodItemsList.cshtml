@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Project2.Models.dbFoodItem>
+
+@{
+    ViewBag.Title = "FoodItemsList";
+}
+
+<h2 style="text-align:center">Food Items of whole week</h2>
+
+<p>
+    @Html.ActionLink("Go Back", "LoggedIn", "Account")
+</p>
+<div style="text-align:center; margin:0 auto">
+    <div style=" text-align:center; width:35%; margin:0 auto; ">
+        <table class="table"  border="2" cellpadding="5" cellspacing="20" valign="middle" style="width: 545px; height: 250px; text-align:center">
+            <tr>
+                <th style="color: black; font-size: 18px">
+
+                    @Html.DisplayNameFor(model => model.FoodName)
+                </th>
+                <th style="color: black; font-size: 18px">
+
+                    @Html.DisplayNameFor(model => model.FoodPrice)
+                </th>
+                <th style="color: black; font-size: 18px">
+
+                    @Html.DisplayNameFor(model => model.FoodDay)
+                </th>
+                <th style="color: black; font-size: 18px">
+
+                    @Html.DisplayNameFor(model => model.FoodType)
+                </th>
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="color: black; font-size: 18px">
+                        @Html.DisplayFor(modelItem => item.FoodName)
+                    </td>
+                    <td style="color: black; font-size: 18px">
+
+                        @Html.DisplayFor(modelItem => item.FoodPrice)
+                    </td>
+                    <td style="color: black; font-size: 18px">
+
+                        @Html.DisplayFor(modelItem => item.FoodDay)
+                    </td>
+                    <td style="color: black; font-size: 18px">
+
+                        @Html.DisplayFor(modelItem => item.FoodType)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

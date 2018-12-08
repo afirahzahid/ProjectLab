@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Project2.Models;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Project2.Controllers
 {
@@ -19,13 +19,21 @@ namespace Project2.Controllers
             {
                 return View(db.dbStudents.ToList());
             }
-            
+
+        }
+        public ActionResult FoodItemsList()
+        {
+            using (dbHostelManagementEntities db = new dbHostelManagementEntities())
+            {
+                return View(db.dbFoodItems.ToList());
+            }
         }
         [HttpGet]
         public ActionResult Register()
         {
             dbStudent s = new dbStudent();
             return View(s);
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -47,7 +55,7 @@ namespace Project2.Controllers
                     ViewBag.Message = "Registration Successful";
 
                 }
-                
+
             }
             return View(s);
         }
@@ -216,6 +224,9 @@ namespace Project2.Controllers
         }
 
 
-    }
+    }   
+    
+
 }
+
         

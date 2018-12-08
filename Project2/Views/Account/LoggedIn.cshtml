@@ -6,5 +6,7 @@
 @if (Session["S_CNIC"] != null)
 {
     <h4> Hye @Session["S_Email"].ToString()</h4>
+    <a> @Html.ActionLink("Food Items List","FoodItemsList", "Account", null, new { style = "color:white" }) </a>
 }
+    <h3 style="text-align:center"> @Html.ActionLink("Food Items List", "FoodItemsList", "Account", null, new { style = "color:darkblue" }) </h3>
 
