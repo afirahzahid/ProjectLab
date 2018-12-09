@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Final.Models.dbLogin>
+﻿@model Final.Models.dbLogin
 
 @{
-    ViewBag.Title = "EIndex";
+    ViewBag.Title = "AdminLogin";
 }
 <link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css") />
 <link rel="stylesheet" href=@Url.Content("/Content/css/font-awesome.min.css") />
@@ -52,51 +52,47 @@
     <!-- Header section end -->
     <!-- Hero section -->
     <section class="hero-section set-bg" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <h4 style="color:white;padding-top:220px;padding-bottom:30px;font-size:50px;margin-left:840px">Admin Login </h4>
 
-        <h2 style="color:white;padding-top:220px;margin-top:0px;font-size:50px;margin-left:800px">EIndex</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-        <table class="table"style="text-decoration-color:white; margin-top:80px;color:white ">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.LoginId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LoginEmail)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LoginPass)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsApproved)
-                </th>
-                <th></th>
-            </tr>
+                <div class="form-group" style="color: black;  font-size: 22px ;margin-left:820px">
+                    @Html.LabelFor(model => model.LoginEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px;color:white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LoginEmail, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
+                        @Html.ValidationMessageFor(model => model.LoginEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            @foreach (var item in Model.Where(x => x.LoginType == "e"))
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LoginId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LoginEmail)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LoginPass)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsApproved)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LoginId }) |
-                        @Html.ActionLink("Details", "EDetails", new { id = item.LoginId }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-                </tr>
-            }
+                <div class="form-group" style="color: black;  font-size: 22px ;margin-left:820px">
+                    @Html.LabelFor(model => model.LoginPass, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px;color:white" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LoginPass, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
+                        @Html.ValidationMessageFor(model => model.LoginPass, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        </table>
+
+                <div class="form-group" style="color: cadetblue;  border-collapse:collapse; margin-bottom:100px;  text-align: center; font-size: 60px">
+                    <div class="col-md-offset-2 col-md-10" style="color: darkblue;  border-collapse:collapse">
+                        <input style="font-size:20px ;background-color:cadetblue; color: white ;width: 99px ; height:39px; border-collapse:collapse ;color:white;text-decoration:none;margin-left:360px" type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     </section>
 
     <!-- feature category section -->
@@ -178,3 +174,5 @@
 
 </body>
 </html>
+
+

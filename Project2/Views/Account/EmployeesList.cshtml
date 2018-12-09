@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Final.Models.dbLogin>
+﻿@model IEnumerable<Final.Models.dbEmployee>
 
 @{
-    ViewBag.Title = "EIndex";
+    ViewBag.Title = "EmployeesList";
 }
 <link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css") />
 <link rel="stylesheet" href=@Url.Content("/Content/css/font-awesome.min.css") />
@@ -53,44 +53,82 @@
     <!-- Hero section -->
     <section class="hero-section set-bg" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
 
-        <h2 style="color:white;padding-top:220px;margin-top:0px;font-size:50px;margin-left:800px">EIndex</h2>
+        <h2 style="color:white;padding-top:220px;margin-top:0px;font-size:50px;margin-left:800px">EmployeesList</h2>
 
-
-        <table class="table"style="text-decoration-color:white; margin-top:80px;color:white ">
+       
+        <table class="table" style="text-decoration-color:white; margin-top:80px;color:white ">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.LoginId)
+                    @Html.DisplayNameFor(model => model.EmpCNIC)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LoginEmail)
+                    @Html.DisplayNameFor(model => model.EmpName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LoginPass)
+                    @Html.DisplayNameFor(model => model.EmpFatherName)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.IsApproved)
+                    @Html.DisplayNameFor(model => model.EmpPhoneNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpDOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpDesignation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpIsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpPassword)
+                </th>
+               
+                <th>
+                    @Html.DisplayNameFor(model => model.EmpHostelName)
                 </th>
                 <th></th>
             </tr>
 
-            @foreach (var item in Model.Where(x => x.LoginType == "e"))
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LoginId)
+                        @Html.DisplayFor(modelItem => item.EmpCNIC)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LoginEmail)
+                        @Html.DisplayFor(modelItem => item.EmpName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LoginPass)
+                        @Html.DisplayFor(modelItem => item.EmpFatherName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsApproved)
+                        @Html.DisplayFor(modelItem => item.EmpPhoneNo)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LoginId }) |
-                        @Html.ActionLink("Details", "EDetails", new { id = item.LoginId }) |
+                        @Html.DisplayFor(modelItem => item.EmpDOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpDesignation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpIsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpPassword)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmpHostelName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "SEdit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                     </td>
                 </tr>

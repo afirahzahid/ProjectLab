@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Project2.Models.dbAllotment>
+﻿@model IEnumerable<Final.Models.dbAllotment>
 
 @{
     ViewBag.Title = "Allotment";
@@ -12,6 +12,15 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.AllotmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.A_RoomId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.A_StudentId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.A_Status)
         </th>
         <th>
@@ -20,17 +29,20 @@
         <th>
             @Html.DisplayNameFor(model => model.A_DateOut)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dbRoom.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dbStudent.S_RegNO)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllotmentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_RoomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_StudentId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.A_Status)
         </td>
@@ -41,15 +53,9 @@
             @Html.DisplayFor(modelItem => item.A_DateOut)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.dbRoom.Details)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dbStudent.S_RegNO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AllotmentId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AllotmentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AllotmentId })
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }
