@@ -1,12 +1,232 @@
-﻿
+﻿@model Final.Models.dbStudent
+
 @{
     ViewBag.Title = "LoggedIn";
 }
 
-@if (Session["S_CNIC"] != null)
-{
-    <h4> Hye @Session["S_Email"].ToString()</h4>
-    <a> @Html.ActionLink("Food Items List","FoodItemsList", "Account", null, new { style = "color:white" }) </a>
-}
-    <h3 style="text-align:center"> @Html.ActionLink("Food Items List", "FoodItemsList", "Account", null, new { style = "color:darkblue" }) </h3>
+<link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/font-awesome.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/animate.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/owl.carousel.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/style.css") />
 
+<html>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-lg-right header-top-right" style="margin: 0px 700px">
+                        <div class="user-panel">
+                            <a href=""><i class="fa fa-user-circle-o"></i> Register</a>
+                            <a> @Html.ActionLink("Login", "Login", "Account", null, new { style = "color:white" }) </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="site-navbar">
+                        <a href="#" class="site-logo"><h3 style="color: white">Hostel Management System</h3> </a>
+                        <div class="nav-switch">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                        <ul class="main-menu">
+                            <li><a> @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("Contact Us", "Contact", "Home", null, new { style = "color:white" })</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header section end -->
+    <!-- Hero section -->
+
+
+    <section class="hero-section set-bg" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <style>
+            div.gallery {
+                margin: 45px;
+                margin-left: 35px;
+                padding: 0px;
+                float: left;
+                width: 380px;
+                height: 310px;
+            }
+
+
+
+                div.gallery img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            div.desc {
+                padding: 15px;
+                text-align: center;
+                height: 30px;
+                margin-left: 30px;
+            }
+        </style>
+
+        <div class="gallery">
+            <a>
+                <img id="allotroom" style="height:220px; width:250px;margin-top:-65px;margin-left:155px" alt="Logo" src="@Url.Content("/Content/img/allot.jpeg")" />
+            </a>
+            <div class="desc">
+                @Html.ActionLink("Allotment list", "StudentsList",
+   null, htmlAttributes: new { @class = "mybtn1",style = "font-size:16px ;background-color:cadetblue; color: white ;width: 90px ; height:30px; border-collapse:collapse ;color:white;text-decoration:none;padding:3px;margin-top:1000px;margin-left:100px" })
+
+            </div>
+        </div>
+
+        <div class="gallery">
+            <a>
+                <img id="std" style="height:220px; width:250px;margin-top:-65px;margin-left:155px" alt="Logo" src="@Url.Content("/Content/img/attendance1.jpg")" />
+            </a>
+            <div class="desc">
+                @Html.ActionLink("Mess Attendance", "SIndex",
+                  null, htmlAttributes: new { @class = "mybtn",style = "font-size:16px ;background-color:cadetblue; color: white ;width: 90px ; height:30px; border-collapse:collapse ;color:white;text-decoration:none;padding:3px;margin-top:1000px;margin-left:104px" })
+
+
+            </div>
+        </div>
+
+
+
+        <div class="gallery">
+            <a>
+                <img id="employe" style="height:220px; width:250px;margin-top:-65px;margin-left:155px" alt="Logo" src="@Url.Content("/Content/img/menu1.jpeg")" />
+            </a>
+            <div class="desc">
+                @Html.ActionLink("Mess menu", "EIndex",
+                 null, htmlAttributes: new { @class = "mybtn1", style = "font-size:16px ;background-color:cadetblue; color: white ;width: 90px ; height:30px; border-collapse:collapse ;color:white;text-decoration:none;padding:3px;margin-left:94px" })
+            </div>
+        </div>
+
+
+
+        <style type="text/css">
+            a.mybtn {
+                background: #b8b8b8;
+                color: #fff;
+                display: marker;
+                margin-top: 1000px;
+                text-decoration: wavy;
+                font-size: 30px;
+            }
+        </style>
+
+        <style type="text/css">
+            a.mybtn1 {
+                background: #b8b8b8;
+                color: #fff;
+                display: marker;
+                text-decoration: wavy;
+                font-size: 30px
+            }
+        </style>
+    </section>
+
+    <!-- feature category section -->
+    <img src="~/Content/img/page-top-bg.jpg" style="height:800px;width:100%">
+    <section class="feature-category-section spad" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <div class="container">
+
+        </div>
+    </section>
+
+
+
+    <!-- Footer section -->
+    <footer class="footer-section set-bg" data-setbg=@Url.Content("/Content/img/service-bg.jpg")>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <img src="img/logo.png" alt="">
+                    <p>Working towards a manageable system of hostels and providing a secure environment. With HMS, all the hostel statistics come under one roof.</p>
+                    <div class="social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <div class="contact-widget">
+                        <h5 class="fw-title">CONTACT US</h5>
+                        <p><i class="fa fa-map-marker"></i>University of Engineering and Technology, Lahore, Pakistan </p>
+                        <p><i class="fa fa-phone"></i>(+042) 666 121 4321</p>
+                        <p><i class="fa fa-envelope"></i>info.HMS@gmail.com</p>
+                        <p><i class="fa fa-clock-o"></i>Mon - Sat, 08 AM - 06 PM</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6  footer-widget">
+                    <div class="newslatter-widget">
+                        <h5 class="fw-title">NEWSLETTER</h5>
+                        <p>Subscribe your email to get the latest news about hostels. </p>
+                        <form class="footer-newslatter-form">
+                            <input type="text" placeholder="Email address">
+                            <button><i class="fa fa-send"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="">Home</a></li>
+
+                        <li><a href="">About us</a></li>
+
+
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+    <!--====== Javascripts & Jquery ======-->
+    <script src=@Url.Content("/Content/js/jquery-3.2.1.min.js")></script>
+    <script src=@Url.Content("/Content/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/Content/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("/Content/js/masonry.pkgd.min.js")></script>
+    <script src=@Url.Content("/Content/js/magnific-popup.min.js")></script>
+    <script src=@Url.Content("/Content/js/main.js")></script>
+
+</body>
+</html>

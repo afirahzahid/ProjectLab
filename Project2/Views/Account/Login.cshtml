@@ -1,46 +1,175 @@
-﻿@model Project2.Models.dbLogin
+﻿@model Final.Models.dbLogin
 
 @{
     ViewBag.Title = "Login";
 }
+<link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/font-awesome.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/animate.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/owl.carousel.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/style.css") />
 
-<h4 style="color: darkblue; text-align: center; font-size: 30px"> Login </h4>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="form-group" style="color: black; text-align: center; font-size: 17px">
-            @Html.LabelFor(model => model.LoginEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LoginEmail, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
-                @Html.ValidationMessageFor(model => model.LoginEmail, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group" style="color: black; text-align: center; font-size: 17px">
-            @Html.LabelFor(model => model.LoginPass, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LoginPass, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
-                @Html.ValidationMessageFor(model => model.LoginPass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group" style="color: darkblue;  text-align: center; font-size: 50px">
-            <div class="col-md-offset-2 col-md-10">
-                <input style = "font-size:20px ;background-color:darkblue; color: white ;width: 140px ; height:40px" type="submit" value="Login" class="btn btn-default" />
-            </div>
-        </div>
+<html>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-lg-right header-top-right" style="margin: 0px 700px">
+                        <div class="user-panel">
+                            <a href=""><i class="fa fa-user-circle-o"></i> Register</a>
+                            <a> @Html.ActionLink("Login", "Login", "Account", null, new { style = "color:white" }) </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="site-navbar">
+                        <a href="#" class="site-logo"><h3 style="color: white">Hostel Management System</h3> </a>
+                        <div class="nav-switch">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                        <ul class="main-menu">
+                            <li><a> @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("Contact Us", "Contact", "Home", null, new { style = "color:white" })</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Header section end -->
+    <!-- Hero section -->
+    <section class="hero-section set-bg" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <h4 style="color:white;padding-top:220px;padding-bottom:30px;font-size:50px;margin-left:900px"> Login </h4>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+            <div class="form-horizontal">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                
+                    <div class="form-group" style="color: black;  font-size: 22px ;margin-left:820px">
+                        @Html.LabelFor(model => model.LoginEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px;color:white" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoginEmail, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
+                            @Html.ValidationMessageFor(model => model.LoginEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="color: black; font-size: 22px;margin-left:820px; padding-top:15px">
+                        @Html.LabelFor(model => model.LoginPass, htmlAttributes: new { @class = "control-label col-md-2", style = "font-size:20px;color:white" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LoginPass, new { htmlAttributes = new { @class = "form-control", style = "width: 260px ; height:30px" } })
+                            @Html.ValidationMessageFor(model => model.LoginPass, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group" style="color: cadetblue;  border-collapse:collapse; margin-bottom:100px;  text-align: center; font-size: 60px">
+                        <div class="col-md-offset-2 col-md-10" style="color: darkblue;  border-collapse:collapse">
+                            <input style="font-size:20px ;background-color:cadetblue; color: white ;width: 99px ; height:39px; border-collapse:collapse ;color:white;text-decoration:none;margin-left:350px" type="submit" value="Login" class="btn btn-default" />
+                        </div>
+                    </div>
+                
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </section>
+
+    <!-- feature category section -->
+    <img src="~/Content/img/page-top-bg.jpg" style="height:800px;width:100%">
+    <section class="feature-category-section spad" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <div class="container">
+
+        </div>
+    </section>
+
+
+
+    <!-- Footer section -->
+    <footer class="footer-section set-bg" data-setbg=@Url.Content("/Content/img/service-bg.jpg")>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <img src="img/logo.png" alt="">
+                    <p>Working towards a manageable system of hostels and providing a secure environment. With HMS, all the hostel statistics come under one roof.</p>
+                    <div class="social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <div class="contact-widget">
+                        <h5 class="fw-title">CONTACT US</h5>
+                        <p><i class="fa fa-map-marker"></i>University of Engineering and Technology, Lahore, Pakistan </p>
+                        <p><i class="fa fa-phone"></i>(+042) 666 121 4321</p>
+                        <p><i class="fa fa-envelope"></i>info.HMS@gmail.com</p>
+                        <p><i class="fa fa-clock-o"></i>Mon - Sat, 08 AM - 06 PM</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6  footer-widget">
+                    <div class="newslatter-widget">
+                        <h5 class="fw-title">NEWSLETTER</h5>
+                        <p>Subscribe your email to get the latest news about hostels. </p>
+                        <form class="footer-newslatter-form">
+                            <input type="text" placeholder="Email address">
+                            <button><i class="fa fa-send"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="">Home</a></li>
+
+                        <li><a href="">About us</a></li>
+
+
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+    <!--====== Javascripts & Jquery ======-->
+    <script src=@Url.Content("/Content/js/jquery-3.2.1.min.js")></script>
+    <script src=@Url.Content("/Content/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/Content/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("/Content/js/masonry.pkgd.min.js")></script>
+    <script src=@Url.Content("/Content/js/magnific-popup.min.js")></script>
+    <script src=@Url.Content("/Content/js/main.js")></script>
+
+</body>
+</html>

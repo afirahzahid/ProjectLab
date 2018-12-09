@@ -1,90 +1,230 @@
-﻿@model Project2.Models.dbStudent
+﻿@model Final.Models.dbStudent
 
 @{
     ViewBag.Title = "SDetails";
 }
+<link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/font-awesome.min.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/animate.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/owl.carousel.css") />
+<link rel="stylesheet" href=@Url.Content("/Content/css/style.css") />
 
-<h2>SDetails</h2>
+<html>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
 
-<div>
-    <h4>dbStudent</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.S_RegNO)
-        </dt>
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-lg-right header-top-right" style="margin: 0px 700px">
+                        <div class="user-panel">
+                            <a href=""><i class="fa fa-user-circle-o"></i> Register</a>
+                            <a> @Html.ActionLink("Login", "Login", "Account", null, new { style = "color:white" }) </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="site-navbar">
+                        <a href="#" class="site-logo"><h3 style="color: white">Hostel Management System</h3> </a>
+                        <div class="nav-switch">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                        <ul class="main-menu">
+                            <li><a> @Html.ActionLink("Home", "Index", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("About Us", "About", "Home", null, new { style = "color:white" })</a></li>
+                            <li><a> @Html.ActionLink("Contact Us", "Contact", "Home", null, new { style = "color:white" })</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_RegNO)
-        </dd>
+    <!-- Header section end -->
+    <!-- Hero section -->
+    <section class="hero-section set-bg" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_Name)
-        </dt>
+        <h2 style="color:white;padding-top:220px;margin-top:0px;font-size:50px;margin-left:800px">Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_FatherName)
-        </dt>
+        <div>
+           
+            <hr />
+            <dl class="dl-horizontal" style="color:white; font-size:25px;margin-left:800px">
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_CNIC)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_FatherName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_CNIC)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_Address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_RegNO)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_Address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_RegNO)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_PhoneNo)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_Name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_PhoneNo)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_Name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_DOB)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_FatherName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_DOB)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_FatherName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_CurrentDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_Address)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_CurrentDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_Address)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_PhoneNo)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_PhoneNo)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.S_Password)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_DOB)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.S_Password)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.S_DOB)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.S_CNIC }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_CurrentDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.S_CurrentDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.S_Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.S_Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.S_Password)
+                </dd>
+
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </section>
+
+    <!-- feature category section -->
+    <img src="~/Content/img/page-top-bg.jpg" style="height:800px;width:100%">
+    <section class="feature-category-section spad" data-setbg=@Url.Content("/Content/img/page-top-bg.jpg")>
+        <div class="container">
+
+        </div>
+    </section>
+
+
+
+    <!-- Footer section -->
+    <footer class="footer-section set-bg" data-setbg=@Url.Content("/Content/img/service-bg.jpg")>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <img src="img/logo.png" alt="">
+                    <p>Working towards a manageable system of hostels and providing a secure environment. With HMS, all the hostel statistics come under one roof.</p>
+                    <div class="social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <div class="contact-widget">
+                        <h5 class="fw-title">CONTACT US</h5>
+                        <p><i class="fa fa-map-marker"></i>University of Engineering and Technology, Lahore, Pakistan </p>
+                        <p><i class="fa fa-phone"></i>(+042) 666 121 4321</p>
+                        <p><i class="fa fa-envelope"></i>info.HMS@gmail.com</p>
+                        <p><i class="fa fa-clock-o"></i>Mon - Sat, 08 AM - 06 PM</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6  footer-widget">
+                    <div class="newslatter-widget">
+                        <h5 class="fw-title">NEWSLETTER</h5>
+                        <p>Subscribe your email to get the latest news about hostels. </p>
+                        <form class="footer-newslatter-form">
+                            <input type="text" placeholder="Email address">
+                            <button><i class="fa fa-send"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="">Home</a></li>
+
+                        <li><a href="">About us</a></li>
+
+
+                        <li><a href="">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+    <!--====== Javascripts & Jquery ======-->
+    <script src=@Url.Content("/Content/js/jquery-3.2.1.min.js")></script>
+    <script src=@Url.Content("/Content/js/bootstrap.min.js")></script>
+    <script src=@Url.Content("/Content/js/owl.carousel.min.js")></script>
+    <script src=@Url.Content("/Content/js/masonry.pkgd.min.js")></script>
+    <script src=@Url.Content("/Content/js/magnific-popup.min.js")></script>
+    <script src=@Url.Content("/Content/js/main.js")></script>
+
+</body>
+</html>
